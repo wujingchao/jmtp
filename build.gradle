@@ -1,0 +1,15 @@
+apply plugin: 'java'
+
+dependencies {
+
+}
+
+dependencies {
+
+}
+
+compileJava {
+    sourceCompatibility "1.7"
+    targetCompatibility "1.7"
+}
+
