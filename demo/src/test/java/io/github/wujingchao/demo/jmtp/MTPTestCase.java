@@ -6,6 +6,7 @@ import jmtp.MTPDataset;
 import jmtp.MTPHelper;
 import jmtp.PortableDevice;
 import jmtp.PortableDeviceManager;
+import okio.Buffer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -33,7 +34,6 @@ public class MTPTestCase {
                     e.printStackTrace();
                     return;
                 }
-                log(event);
             }
         });
     }
@@ -62,18 +62,35 @@ public class MTPTestCase {
     public void testGetStorageIDs() throws COMException {
         MTPDataset request = new MTPDataset(0x1004);
         MTPDataset response = MTPHelper.getInstance().sendCMDWithInData(device, request);
-        log(response);
+        byte[] storageIdArr = response.data;
+        long responseCode = response.code;
     }
 
 
     @Test
     public void testGetNumObjects() throws COMException {
-        MTPDataset request = new MTPDataset(0x1006, new int[]{
-                0xFFFFFFFF,//storageID for all storage
-                0, //Object Format for all
-                0x00000000//ObjectHandle of Association  for all
-        });
+        MTPDataset request = new MTPDataset();
+        request.code = 0x1006;//Operation Code
+        request.params = new int[]{0xFFFFFFFF, 0, 0x00000000}; //Params
         MTPDataset response = MTPHelper.getInstance().sendCMDWithoutDataPhase(device, request);
-        log(response);
+        long responseCode = response.code;
+        int[] responseParams = response.params;
+    }
+
+    @Test
+    public void testSetDevicePropValue() throws COMException {
+        MTPDataset request = new MTPDataset();
+        request.code = 0x1016;
+        request.params = new int[]{0xD402};
+        Buffer buffer = new Buffer();
+        buffer.writeByte(0x5);
+        buffer.writeShortLe('X');
+        buffer.writeShortLe('B');
+        buffer.writeShortLe('O');
+        buffer.writeShortLe('X');
+        buffer.writeShortLe(0);
+        request.data = buffer.readByteArray(); //MTP Protocol String
+        MTPDataset response = MTPHelper.getInstance().sendCMDWithOutData(device, request);
+        long responseCode = response.code;
     }
 }

@@ -6,13 +6,6 @@ import java.util.Map;
 
 public class MTPDataset {
 
-/*
-    0x9000 ----0x900F 定义为MTP处理（/data/update  文件传输），不需转发给apk
-    0x9010 ----0x901F 定义为数据流向I--->R有data，转发给apk
-    0x9020 ----0x902F 定义为数据流向R-->I有data，从apk读数据
-    0x9030 ----0x903F 定义只有请求，无data数据，但是携带参数命令，需要转发给apk
- */
-
     public long code;
 
     public int[] params = new int[0];

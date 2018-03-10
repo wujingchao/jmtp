@@ -10,4 +10,6 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':library')
+    compile files('libs/okio-1.14.0.jar')
 }

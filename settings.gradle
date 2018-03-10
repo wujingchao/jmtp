@@ -1,4 +1,3 @@
-include 'io.github.wujingchao.demo'
 include 'library'
 include 'demo'
 
