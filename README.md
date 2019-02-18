@@ -12,7 +12,7 @@ Add Some Feture:
 
 1.Send Custom MTP Command
 
-![No Data Phase](http://o90rk2b64.bkt.clouddn.com/mtp_transfer_nodata.png?imageView2/2/w/656/h/500/q/100)
+![No Data Phase](http://wujingchao.github.io/assets/mtp_transfer_nodata.png)
 
 example:
 
@@ -28,7 +28,7 @@ public void testGetNumObjects() throws COMException {
 }
 ```
 
-![I->R](http://o90rk2b64.bkt.clouddn.com/mtp_transfer_i-r.png?imageView2/2/w/656/h/500/q/100)
+![I->R](http://wujingchao.github.io/assets/mtp_transfer_i-r.png)
 
 example:
 ```
@@ -50,7 +50,7 @@ example:
     }
 ```
 
-![R->I](http://o90rk2b64.bkt.clouddn.com/mtp_transfer_r-i.png?imageView2/2/w/656/h/500/q/100)
+![R->I](http://wujingchao.github.io/assets/mtp_transfer_r-i.png)
 
     @Test
     public void testGetStorageIDs() throws COMException {
@@ -63,7 +63,7 @@ example:
 
 2.Register MTP Event
 
-![event](http://o90rk2b64.bkt.clouddn.com/mtp_transfer_event.png?imageView2/2/w/656/h/400/q/100)
+![event](http://wujingchao.github.io/assets/mtp_transfer_event.png)
 
     MTPHelper.getInstance().registerEvent(device, new MTPHelper.EventListener() {
         @Override
